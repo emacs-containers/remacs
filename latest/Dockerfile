@@ -26,4 +26,10 @@ RUN make install
 
 FROM debian:buster-slim
 COPY --from=build /usr/local/ /usr/local/
+RUN apt-get update \
+ && apt-get -y --no-install-recommends install \
+      libjpeg62-turbo libtiff5 libgif7 libxpm4 \
+      libgtk-3-0 libgnutls30 libncurses5 libxml2 libxt6 \
+      libx11-xcb1 libxft2 \
+ && rm -rf /var/lib/apt/lists/*
 CMD ["remacs"]
