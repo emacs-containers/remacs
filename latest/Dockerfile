@@ -24,7 +24,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 WORKDIR /build/remacs
 RUN git init \
  && git remote add origin https://github.com/remacs/remacs.git \
- && git fetch origin 42860365e6602cc5a1a005cc98eeaa5b72d52811 --depth 1 \
+ && git fetch origin bbd9ac5f8887ebdbf441082bd46578f81b37389c --depth 1 \
  && git reset --hard FETCH_HEAD
 RUN rustup install "$(cat rust-toolchain)"
 RUN ./autogen.sh
