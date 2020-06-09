@@ -1,3 +1,12 @@
+# Like the GNU Emacs dumper, the remacs dumper is unable to run with
+# ASLR (Address space layout randomization) enabled on the host OS.
+#
+# The following command disables ASLR on Linux:
+# sudo sh -c 'echo 0 > /proc/sys/kernel/randomize_va_space'
+#
+# The dumper only needs to run in the build stage, so once built the
+# container runs fine even with ASLR enabled.
+
 FROM debian:buster-slim AS build
 RUN apt-get update \
  && apt-get -y --no-install-recommends install \
