@@ -17,5 +17,6 @@ hash="$(docker ps -aqf name='^remacs$')"
 test -n "$hash"
 docker commit -m "Rebuild" -a "$user" "$hash" emacsen/remacs:latest
 docker rm -f remacs
+docker rmi remacs
 docker login
 docker push emacsen/remacs:latest
